@@ -66,13 +66,14 @@ mongoose
     })
     .then(() => {
         console.log("MongoDB connected successfully");
-
-        const PORT = process.env.PORT || 5000;
-
-        app.listen(PORT, () => {
-            console.log(`Server running on port ${PORT}`);
-        });
     })
     .catch((error) => {
         console.log("MongoDB connection failed:", error.message);
     });
+
+// Start server independently from MongoDB
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
